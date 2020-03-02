@@ -27,6 +27,7 @@ Game::Game( MainWindow& wnd )
 	wnd( wnd ),
 	gfx( wnd ),
 	rng( rd() ),
+	frametimer(),
 	xDist( 0.0f,770.0f ),
 	yDist( 0.0f,570.0f ),
 	goal( xDist( rng ),yDist( rng ) ),
@@ -50,6 +51,7 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	float delta_time = frametimer.GetDurationBetweenEachFrame();
 	goal.UpdateColor();
 	if( isStarted && !isGameOver )
 	{
